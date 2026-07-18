@@ -4,16 +4,28 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Visit &amp; Order | Gemma's Farm Stand, Kelowna BC</title>
-<meta name="description" content="Hours, directions, and harvest box ordering for Gemma's Farm Stand at 2231 Galiano Rd, Kelowna." />
+<meta name="description" content="Hours, directions, and weekly pre-orders for Gemma's Farm Stand at 2231 Galiano Rd, Kelowna." />
 <link rel="stylesheet" href="styles.css" />
 <style>
-  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+  .visit-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start;}
   .hours-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:32px;margin-bottom:28px;}
   .hours-card h3{margin:0 0 16px;font-size:20px;}
   .hours-card table td:last-child{text-align:right;font-weight:600;}
   .contact-lines{display:flex;flex-direction:column;gap:12px;margin-top:8px;}
   .contact-lines div{display:flex;gap:12px;align-items:center;font-size:15px;}
   .contact-lines svg{width:18px;height:18px;color:var(--terracotta);flex-shrink:0;}
+  .item{display:grid;grid-template-columns:1fr auto auto;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line);}
+  .item .nm{font-size:15px;}
+  .item .nm small{display:block;color:rgba(43,35,24,.55);font-size:12px;}
+  .item .pr{font-family:'Fraunces',serif;font-size:16px;color:var(--olive);white-space:nowrap;}
+  .qty{display:inline-flex;align-items:center;border:1.5px solid var(--line);border-radius:100px;overflow:hidden;}
+  .qty button{background:none;border:none;width:34px;height:34px;font-size:17px;cursor:pointer;color:var(--terracotta);font-weight:700;font-family:'Inter',sans-serif;}
+  .qty button:hover{background:var(--cream);}
+  .qty button:focus-visible{outline:2px solid var(--olive);outline-offset:-2px;}
+  .qty b{min-width:26px;text-align:center;font-size:15px;}
+  .totals{display:flex;justify-content:space-between;align-items:center;padding:20px 0;font-size:16px;}
+  .totals b{font-family:'Fraunces',serif;font-size:26px;color:var(--terracotta);}
+  .totals span{color:rgba(43,35,24,.6);font-size:14px;}
   @media (max-width:860px){.visit-grid{grid-template-columns:1fr;}}
 </style>
 </head>
@@ -29,7 +41,7 @@
           <li><a href="produce.html">What's Fresh</a></li>
           <li><a class="active" href="visit.html">Visit &amp; Order</a></li>
         </ul>
-        <a class="btn" href="#order" style="padding:11px 22px;">Order a Harvest Box</a>
+        <a class="btn" href="#order" style="padding:11px 22px;">Order Ahead</a>
       </nav>
     </div>
   </header>
@@ -38,7 +50,7 @@
     <div class="wrap">
       <span class="eyebrow">Visit &amp; order</span>
       <h1>Find the stand, or order ahead</h1>
-      <p>We're at 2231 Galiano Rd in Kelowna. Drop in during stand hours, or put in a harvest box order and pick it up ready to go.</p>
+      <p>We're at 2231 Galiano Rd in Kelowna. Drop in during stand hours, or build a pickup order below and it'll be packed and waiting.</p>
     </div>
   </div>
 
@@ -65,31 +77,27 @@
 
       <div id="order">
         <div class="form">
-          <span class="eyebrow">Harvest box</span>
-          <h2 style="margin:0 0 10px;font-size:clamp(1.5rem,2.5vw,2rem);">Order this week's box</h2>
-          <p style="margin:0 0 26px;font-size:15px;color:rgba(43,35,24,.7);">Order by Wednesday night, pick up Thursday through Sunday. Pay at the stand — cash or card.</p>
-          <div class="form-success" id="ok">Thanks! Your box request is in. We'll call to confirm pickup day. <em>(Demo form — no order was actually sent.)</em></div>
-          <form onsubmit="event.preventDefault();document.getElementById('ok').style.display='block';this.reset();this.querySelector('button').blur();">
+          <span class="eyebrow">Order ahead</span>
+          <h2 style="margin:0 0 10px;font-size:clamp(1.5rem,2.5vw,2rem);">Build this week's pickup</h2>
+          <p style="margin:0 0 20px;font-size:15px;color:rgba(43,35,24,.7);">Order by Wednesday night, pick up Thursday through Sunday. Pay at the stand — cash or card.</p>
+
+          <div id="items"></div>
+          <div class="totals"><span id="itemcount">Nothing added yet</span><b id="total">$0</b></div>
+
+          <div class="form-success" id="ok"></div>
+          <form id="orderform">
             <label for="name">Name</label>
             <input id="name" type="text" autocomplete="name" required />
             <label for="phone">Phone</label>
             <input id="phone" type="tel" autocomplete="tel" required />
-            <label for="size">Box size</label>
-            <select id="size" required>
-              <option value="">Choose one…</option>
-              <option>Small — feeds 2 ($25)</option>
-              <option>Large — feeds a family ($40)</option>
-            </select>
-            <label for="pickup">Preferred pickup day</label>
+            <label for="pickup">Pickup day</label>
             <select id="pickup" required>
               <option value="">Choose one…</option>
               <option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option>
             </select>
-            <label for="notes">Anything to avoid? (optional)</label>
-            <textarea id="notes" rows="3" placeholder="Allergies, dislikes, extra of something…"></textarea>
-            <button class="btn" type="submit" style="width:100%;justify-content:center;">Request my box</button>
+            <button class="btn" type="submit" style="width:100%;justify-content:center;">Place pickup order</button>
           </form>
-          <p class="form-note">Demo form for the concept site. On the live site this would go straight to the stand's phone or email.</p>
+          <p class="form-note">Demo order builder with sample items and prices. On the live site this would send the order to the stand's phone or email — or run on a farm-store platform like LocalLine, the same tool other Okanagan farms use.</p>
         </div>
       </div>
     </section>
@@ -105,5 +113,48 @@
       <p class="fine">This concept site was put together by a local web design service as an unsolicited sample. Not affiliated with or endorsed by Gemma's Farm Stand. If you'd rather not be contacted again about this, just reply and let us know.</p>
     </div>
   </footer>
+
+<script>
+const ITEMS=[
+ {n:"Mixed harvest box, small",d:"feeds two for a week",p:25},
+ {n:"Mixed harvest box, large",d:"feeds a family",p:40},
+ {n:"Tomatoes",d:"per 2 lb basket",p:6},
+ {n:"Apricots",d:"per 2 lb basket",p:7},
+ {n:"Sweet corn",d:"half dozen",p:5},
+ {n:"Salad greens",d:"per bag, cut same day",p:4},
+ {n:"Fresh herbs",d:"basil or dill, per bunch",p:3}
+];
+const qty=ITEMS.map(()=>0);
+function money(n){return "$"+n;}
+function render(){
+  document.getElementById("items").innerHTML=ITEMS.map((it,i)=>
+   `<div class="item">
+      <span class="nm">${it.n}<small>${it.d}</small></span>
+      <span class="pr">${money(it.p)}</span>
+      <span class="qty">
+        <button type="button" aria-label="Remove one ${it.n}" data-i="${i}" data-d="-1">−</button>
+        <b>${qty[i]}</b>
+        <button type="button" aria-label="Add one ${it.n}" data-i="${i}" data-d="1">+</button>
+      </span>
+    </div>`).join("");
+  const count=qty.reduce((a,b)=>a+b,0);
+  const total=qty.reduce((a,q,i)=>a+q*ITEMS[i].p,0);
+  document.getElementById("itemcount").textContent=count?count+" item"+(count===1?"":"s")+" in your order":"Nothing added yet";
+  document.getElementById("total").textContent=money(total);
+  document.querySelectorAll(".qty button").forEach(b=>b.onclick=()=>{
+    const i=+b.dataset.i;qty[i]=Math.max(0,qty[i]+ +b.dataset.d);render();});
+}
+document.getElementById("orderform").onsubmit=e=>{
+  e.preventDefault();
+  const count=qty.reduce((a,b)=>a+b,0);
+  const ok=document.getElementById("ok");
+  if(!count){ok.textContent="Add at least one item first — use the + buttons above.";ok.style.display="block";return;}
+  const total=qty.reduce((a,q,i)=>a+q*ITEMS[i].p,0);
+  ok.innerHTML=`Order in! ${count} item${count===1?"":"s"}, ${money(total)}, for ${document.getElementById("pickup").value} pickup. We'll call to confirm. <em>(Demo — no order was actually sent.)</em>`;
+  ok.style.display="block";
+  qty.fill(0);render();e.target.reset();
+};
+render();
+</script>
 </body>
 </html>
