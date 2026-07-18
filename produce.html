@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>What's Fresh | Gemma's Farm Stand, Kelowna BC</title>
+<meta name="description" content="What's in season right now at Gemma's Farm Stand in Kelowna, plus the full seasonal calendar." />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  .now-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  .season-key{display:flex;gap:20px;margin-bottom:18px;font-size:13px;flex-wrap:wrap;}
+  .season-key span{display:inline-flex;align-items:center;gap:6px;}
+  .pip{width:12px;height:12px;border-radius:50%;display:inline-block;}
+  .pip.on{background:var(--olive);}
+  .pip.soon{background:var(--gold);}
+  .pip.off{background:var(--line);}
+  td .pip{margin:0 auto;}
+  .cal td:not(:first-child),.cal th:not(:first-child){text-align:center;}
+  .note-band{background:var(--cream);border-radius:20px;padding:32px 36px;display:flex;gap:20px;align-items:flex-start;margin-top:44px;}
+  .note-band svg{width:26px;height:26px;color:var(--terracotta);flex-shrink:0;margin-top:3px;}
+  .note-band p{margin:0;font-size:15px;color:rgba(43,35,24,.75);}
+  @media (max-width:860px){.now-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+  <div class="demo-banner">DEMO CONCEPT SITE — a design sample built for Gemma's Farm Stand, not yet live for the business</div>
+
+  <header>
+    <div class="wrap">
+      <nav>
+        <a class="logo" href="index.html">Gemma's <em>Farm Stand</em></a>
+        <ul>
+          <li><a href="about.html">Our Story</a></li>
+          <li><a class="active" href="produce.html">What's Fresh</a></li>
+          <li><a href="visit.html">Visit &amp; Order</a></li>
+        </ul>
+        <a class="btn" href="visit.html" style="padding:11px 22px;">Order a Harvest Box</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow">What's fresh</span>
+      <h1>On the table this week</h1>
+      <p>Updated as the season moves. Call 250-801-2498 before you drive out if you're after something specific — good weeks sell out early.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section>
+      <div class="section-head">
+        <span class="eyebrow">Mid-July</span>
+        <h2>Peak summer at the stand</h2>
+      </div>
+      <div class="now-grid">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1518843875459-f738682238a6?w=600&q=75&auto=format&fit=crop" alt="Basket of summer produce" />
+          <div class="card-body">
+            <h3>Stone fruit</h3>
+            <p>Apricots and early peaches. Cherries are winding down, so this is the last call.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=600&q=75&auto=format&fit=crop" alt="Fresh vegetables on display" />
+          <div class="card-body">
+            <h3>Garden vegetables</h3>
+            <p>Tomatoes, cucumbers, zucchini, beans, and the first sweet corn of the year.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1470549638415-0a0755be0619?w=600&q=75&auto=format&fit=crop" alt="Produce stall with mixed goods" />
+          <div class="card-body">
+            <h3>Greens &amp; herbs</h3>
+            <p>Lettuce, chard, basil, and dill — cut the morning we open.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top:0;">
+      <div class="section-head">
+        <span class="eyebrow">Plan ahead</span>
+        <h2>The seasonal calendar</h2>
+        <p>What to expect through the year. Weather moves these by a week or two either way.</p>
+      </div>
+      <div class="season-key">
+        <span><span class="pip on"></span> In season</span>
+        <span><span class="pip soon"></span> Coming soon / tail end</span>
+        <span><span class="pip off"></span> Not available</span>
+      </div>
+      <table class="cal">
+        <thead>
+          <tr><th>Produce</th><th>May–Jun</th><th>Jul–Aug</th><th>Sep–Oct</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Cherries</td><td><span class="pip soon"></span></td><td><span class="pip soon"></span></td><td><span class="pip off"></span></td></tr>
+          <tr><td>Apricots &amp; peaches</td><td><span class="pip off"></span></td><td><span class="pip on"></span></td><td><span class="pip soon"></span></td></tr>
+          <tr><td>Tomatoes</td><td><span class="pip soon"></span></td><td><span class="pip on"></span></td><td><span class="pip on"></span></td></tr>
+          <tr><td>Sweet corn</td><td><span class="pip off"></span></td><td><span class="pip on"></span></td><td><span class="pip soon"></span></td></tr>
+          <tr><td>Salad greens &amp; herbs</td><td><span class="pip on"></span></td><td><span class="pip on"></span></td><td><span class="pip on"></span></td></tr>
+          <tr><td>Apples &amp; pears</td><td><span class="pip off"></span></td><td><span class="pip soon"></span></td><td><span class="pip on"></span></td></tr>
+          <tr><td>Squash &amp; pumpkins</td><td><span class="pip off"></span></td><td><span class="pip off"></span></td><td><span class="pip on"></span></td></tr>
+        </tbody>
+      </table>
+      <div class="note-band">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
+        <p>Sample listing for demo purposes. The real stand's inventory changes weekly — this page would be kept current by whoever runs the stand, or updated automatically from a simple weekly checklist.</p>
+      </div>
+    </section>
+
+    <section style="padding-top:0;text-align:center;">
+      <a class="btn" href="visit.html">Order this week's harvest box</a>
+    </section>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      <a class="logo" href="index.html">Gemma's <em>Farm Stand</em></a>
+      <div class="footer-links">
+        <a href="about.html">Our Story</a><a href="produce.html">What's Fresh</a><a href="visit.html">Visit &amp; Order</a>
+      </div>
+      <p>&copy; 2026 Gemma's Farm Stand — demo site created as a design sample.</p>
+      <p class="fine">This concept site was put together by a local web design service as an unsolicited sample. Not affiliated with or endorsed by Gemma's Farm Stand. If you'd rather not be contacted again about this, just reply and let us know.</p>
+    </div>
+  </footer>
+</body>
+</html>

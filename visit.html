@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Visit &amp; Order | Gemma's Farm Stand, Kelowna BC</title>
+<meta name="description" content="Hours, directions, and harvest box ordering for Gemma's Farm Stand at 2231 Galiano Rd, Kelowna." />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+  .hours-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:32px;margin-bottom:28px;}
+  .hours-card h3{margin:0 0 16px;font-size:20px;}
+  .hours-card table td:last-child{text-align:right;font-weight:600;}
+  .contact-lines{display:flex;flex-direction:column;gap:12px;margin-top:8px;}
+  .contact-lines div{display:flex;gap:12px;align-items:center;font-size:15px;}
+  .contact-lines svg{width:18px;height:18px;color:var(--terracotta);flex-shrink:0;}
+  @media (max-width:860px){.visit-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+  <div class="demo-banner">DEMO CONCEPT SITE — a design sample built for Gemma's Farm Stand, not yet live for the business</div>
+
+  <header>
+    <div class="wrap">
+      <nav>
+        <a class="logo" href="index.html">Gemma's <em>Farm Stand</em></a>
+        <ul>
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="produce.html">What's Fresh</a></li>
+          <li><a class="active" href="visit.html">Visit &amp; Order</a></li>
+        </ul>
+        <a class="btn" href="#order" style="padding:11px 22px;">Order a Harvest Box</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow">Visit &amp; order</span>
+      <h1>Find the stand, or order ahead</h1>
+      <p>We're at 2231 Galiano Rd in Kelowna. Drop in during stand hours, or put in a harvest box order and pick it up ready to go.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section class="visit-grid">
+      <div>
+        <div class="hours-card">
+          <h3>Stand hours (in season)</h3>
+          <table>
+            <tbody>
+              <tr><td>Thursday &amp; Friday</td><td>10am – 6pm</td></tr>
+              <tr><td>Saturday</td><td>9am – 4pm</td></tr>
+              <tr><td>Sunday</td><td>10am – 2pm</td></tr>
+              <tr><td>Mon – Wed</td><td>Closed (we're in the field)</td></tr>
+            </tbody>
+          </table>
+          <div class="contact-lines">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-6-5.5-6-10a6 6 0 1 1 12 0c0 4.5-6 10-6 10Z"/><circle cx="12" cy="11" r="2.5"/></svg> 2231 Galiano Rd, Kelowna BC</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg> 250-801-2498</div>
+          </div>
+        </div>
+        <iframe class="map-embed" title="Map to Gemma's Farm Stand, 2231 Galiano Rd Kelowna" src="https://maps.google.com/maps?q=2231+Galiano+Rd+Kelowna+BC&z=14&output=embed" loading="lazy"></iframe>
+      </div>
+
+      <div id="order">
+        <div class="form">
+          <span class="eyebrow">Harvest box</span>
+          <h2 style="margin:0 0 10px;font-size:clamp(1.5rem,2.5vw,2rem);">Order this week's box</h2>
+          <p style="margin:0 0 26px;font-size:15px;color:rgba(43,35,24,.7);">Order by Wednesday night, pick up Thursday through Sunday. Pay at the stand — cash or card.</p>
+          <div class="form-success" id="ok">Thanks! Your box request is in. We'll call to confirm pickup day. <em>(Demo form — no order was actually sent.)</em></div>
+          <form onsubmit="event.preventDefault();document.getElementById('ok').style.display='block';this.reset();this.querySelector('button').blur();">
+            <label for="name">Name</label>
+            <input id="name" type="text" autocomplete="name" required />
+            <label for="phone">Phone</label>
+            <input id="phone" type="tel" autocomplete="tel" required />
+            <label for="size">Box size</label>
+            <select id="size" required>
+              <option value="">Choose one…</option>
+              <option>Small — feeds 2 ($25)</option>
+              <option>Large — feeds a family ($40)</option>
+            </select>
+            <label for="pickup">Preferred pickup day</label>
+            <select id="pickup" required>
+              <option value="">Choose one…</option>
+              <option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option>
+            </select>
+            <label for="notes">Anything to avoid? (optional)</label>
+            <textarea id="notes" rows="3" placeholder="Allergies, dislikes, extra of something…"></textarea>
+            <button class="btn" type="submit" style="width:100%;justify-content:center;">Request my box</button>
+          </form>
+          <p class="form-note">Demo form for the concept site. On the live site this would go straight to the stand's phone or email.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      <a class="logo" href="index.html">Gemma's <em>Farm Stand</em></a>
+      <div class="footer-links">
+        <a href="about.html">Our Story</a><a href="produce.html">What's Fresh</a><a href="visit.html">Visit &amp; Order</a>
+      </div>
+      <p>&copy; 2026 Gemma's Farm Stand — demo site created as a design sample.</p>
+      <p class="fine">This concept site was put together by a local web design service as an unsolicited sample. Not affiliated with or endorsed by Gemma's Farm Stand. If you'd rather not be contacted again about this, just reply and let us know.</p>
+    </div>
+  </footer>
+</body>
+</html>
